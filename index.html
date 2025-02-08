@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+             function askPermission(){
+
+//add constraints object
+var constraints = {
+    video:true};
+
+//call getUserMedia
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+
+    var video = document.querySelector('video');
+    video.srcObject = mediaStream;
+    video.play();
+    }).catch(function(err){
+        console.log("There's an error!" + err.message);
+    })
+
+}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIE Website</title>
+    <link rel="stylesheet" href="indexDesign.css" />
+
+<style>
+     body{font-family: Arial, Helvetica, sans-serif};
+ </style>
+</head>
+<body>
+    
+    <div class="header">
+        <h1>AMIE Challenge</h1>
+        <p>ASL Translator for Medical Offices</p>
+      </div>
+      <!--<div class="navbar">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#" class="right">Link</a>
+      </div>-->
+      <div class="row">
+        <div class="side">Click the button on the right side to turn on the camera.</div>
+        <div class="main">
+            <button class="my-button" onclick="askPermission()">Click for Camera</button>
+        <video></video>
+        </div>
+      </div>
+      <div class="footer">
+        <h2>Created by the University of Maryland Eastern Shore Team 2025</h2>
+      </div>
+</body>
+</html>
